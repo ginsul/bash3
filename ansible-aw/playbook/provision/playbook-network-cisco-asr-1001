@@ -9,4 +9,4 @@
     - folder_diff: "{{ lookup('env','WORKSPACE') }}/folderdiff"    
 
   roles:
-    - { role: provision/roles/network-cisco-asr-1001 }
+    - { role: ../../../provision/roles/network-cisco-asr-1001}
