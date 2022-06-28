@@ -20,3 +20,5 @@
           replace_config: true
           commit_changes: true
           archive_file: "{{folder_backup}}/backup"
+          get_diffs: true
+          diff_file: "{{folder_diff}}/deploy.diff"
