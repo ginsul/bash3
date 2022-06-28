@@ -11,7 +11,7 @@
         - { path: '{{ folder_diff }}', state: 'absent'}
         - { path: '{{ folder_diff }}', state: 'directory'}
 
-    - name: "create a diff"
+    - name: "Deploy to Network Device"
       napalm_install_config:
           provider: "{{ login_asr }}"
           dev_os: "ios"
