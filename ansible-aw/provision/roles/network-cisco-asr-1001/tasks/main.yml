@@ -16,7 +16,7 @@
           provider: "{{ login_asr }}"
           dev_os: "ios"
           config_file: "{{folder_network}}/cisco-asr-1001.conf"
-          optional_args: {'secret': {{ thesecret }} }
+          optional_args: {'secret': 'utha123' }
           replace_config: true
           commit_changes: true
           get_diffs: true
