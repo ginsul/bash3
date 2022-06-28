@@ -10,8 +10,7 @@
       with_items:
         - { path: '{{ folder_diff }}', state: 'absent'}
         - { path: '{{ folder_diff }}', state: 'directory'}
-      tags:
-        - build  
+
 
     - name: "Deploy to Network Device"
       napalm_install_config:
@@ -24,10 +23,8 @@
           diff_file: "{{folder_diff}}/config.diff"
       check_mode: yes
       register: outnya
-      tags:
-        - build  
+
 
     - debug:
         var: outnya.msg
-      tags:
-        - build  
+

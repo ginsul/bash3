@@ -10,8 +10,7 @@
       with_items:
         - { path: '{{ folder_backup }}', state: 'absent'}
         - { path: '{{ folder_backup }}', state: 'directory'}
-      tags:
-        - deploy  
+
 
     - name: "create a diff"
       napalm_install_config:
@@ -21,5 +20,3 @@
           replace_config: true
           commit_changes: true
           archive_file: "{{folder_backup}}/backup"
-      tags:
-        - deploy  
