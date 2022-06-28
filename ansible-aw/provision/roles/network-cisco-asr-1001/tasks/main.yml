@@ -13,11 +13,10 @@
 
     - name: "create a diff"
       napalm_install_config:
+          provider: "{{ login_asr }}"
           dev_os: "ios"
           config_file: "{{folder_network}}/cisco-asr-1001.conf"
           replace_config: true
-          username: utha
-          password: utha123
           commit_changes: true
           get_diffs: true
           diff_file: "{{folder_diff}}/config.diff"
