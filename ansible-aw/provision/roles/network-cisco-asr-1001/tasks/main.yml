@@ -1,0 +1,28 @@
+---
+
+    - name: re-create directory
+      file:
+        path: "{{ item.path }}"
+        state: "{{ item.state }}"
+        owner: root
+        group: root
+        mode: 0775
+      with_items:
+        - { path: '{{ folder_diff }}', state: 'absent'}
+        - { path: '{{ folder_diff }}', state: 'directory'}
+
+    - name: "create a diff"
+      napalm_install_config:
+          dev_os: "ios"
+          config_file: "{{folder_network}}/cisco-asr-1001.conf"
+          replace_config: true
+          username: utha
+          password: utha123
+          commit_changes: true
+          get_diffs: true
+          diff_file: "{{folder_diff}}/config.diff"
+      check_mode: yes
+      register: outnya
+
+    - debug:
+        var: outnya.msg

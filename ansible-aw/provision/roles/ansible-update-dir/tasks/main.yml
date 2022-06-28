@@ -1,0 +1,25 @@
+---
+- name: deploy new apps to node
+  hosts: eve
+  user: root
+  become: yes
+  become_method: sudo
+  gather_facts: True
+  serial: 1
+  tasks:
+    - name: make sure directory /data/ansible exist
+      file: 
+        path: "{{ item }}"
+        state: directory 
+        mode: 0755
+      with_items:
+        - /data/ansible-aw
+
+    - name: Update ansible script on every slave
+      synchronize:
+        src: "{{ lookup('env', 'WORKSPACE') }}/"
+        dest: /data/ansible-aw
+        delete: yes
+        rsync_opts:
+          - "--exclude=.git"
+          - "--exclude=ansible.cfg"

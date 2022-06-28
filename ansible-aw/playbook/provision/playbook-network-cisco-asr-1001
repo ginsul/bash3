@@ -1,0 +1,12 @@
+---
+
+- hosts: cisco
+  gather_facts: no
+  connection: local
+  vars:
+    - ansible_python_interpreter: /usr/local/bin/python3.8
+    - folder_network: "{{ lookup('env','WORKSPACE') }}/network"
+    - folder_diff: "{{ lookup('env','WORKSPACE') }}/folderdiff"    
+
+  roles:
+    - { role: provision/roles/network-cisco-asr-1001 }

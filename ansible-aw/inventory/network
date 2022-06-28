@@ -1,0 +1,18 @@
+[sw]
+12.12.12.22
+
+[eve]
+172.25.30.200 
+
+[cisco]
+12.12.12.22
+
+[junos_devices]
+fw01 ansible_host=12.12.12.20
+
+[junos_devices:vars]
+ansible_connection=ansible.netcommon.netconf
+ansible_network_os=junipernetworks.junos.junos
+ansible_user=utha
+ansible_password=utha123
+ansible_python_interpreter=/usr/local/bin/python3.8
