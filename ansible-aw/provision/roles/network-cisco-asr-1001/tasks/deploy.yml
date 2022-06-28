@@ -12,7 +12,7 @@
         - { path: '{{ folder_backup }}', state: 'directory'}
 
 
-    - name: "create a diff"
+    - name: "Deploy to network devices"
       napalm_install_config:
           provider: "{{ login_asr }}"
           dev_os: "ios"

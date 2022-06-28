@@ -12,7 +12,7 @@
         - { path: '{{ folder_diff }}', state: 'directory'}
 
 
-    - name: "Deploy to Network Device"
+    - name: "Compare Config"
       napalm_install_config:
           provider: "{{ login_asr }}"
           dev_os: "ios"
