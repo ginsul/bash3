@@ -1,0 +1,21 @@
+---
+
+    - name: re-create directory
+      file:
+        path: "{{ item.path }}"
+        state: "{{ item.state }}"
+        owner: root
+        group: root
+        mode: 0775
+      with_items:
+        - { path: '{{ folder_backup }}', state: 'absent'}
+        - { path: '{{ folder_backup }}', state: 'directory'}
+
+    - name: "create a diff"
+      napalm_install_config:
+          provider: "{{ login_asr }}"
+          dev_os: "ios"
+          config_file: "{{folder_network}}/cisco-asr-1001.conf"
+          replace_config: true
+          commit_changes: true
+          archive_file: "{{folder_backup}}/backup"
