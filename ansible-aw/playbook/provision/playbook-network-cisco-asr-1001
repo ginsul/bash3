@@ -8,5 +8,8 @@
     - folder_network: "{{ lookup('env','WORKSPACE') }}/network"
     - folder_diff: "{{ lookup('env','WORKSPACE') }}/folderdiff"    
 
+  vars_files:
+    - ../../group_vars/network/cisco-asr.yml
+    
   roles:
     - { role: ../../../provision/roles/network-cisco-asr-1001}
