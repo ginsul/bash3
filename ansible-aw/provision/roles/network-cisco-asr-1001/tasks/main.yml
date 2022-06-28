@@ -1,27 +1,6 @@
 ---
+- include: build.yml
+  tags: build
 
-    - name: re-create directory
-      file:
-        path: "{{ item.path }}"
-        state: "{{ item.state }}"
-        owner: root
-        group: root
-        mode: 0775
-      with_items:
-        - { path: '{{ folder_diff }}', state: 'absent'}
-        - { path: '{{ folder_diff }}', state: 'directory'}
-
-    - name: "Deploy to Network Device"
-      napalm_install_config:
-          provider: "{{ login_asr }}"
-          dev_os: "ios"
-          config_file: "{{folder_network}}/cisco-asr-1001.conf"
-          replace_config: true
-          commit_changes: true
-          get_diffs: true
-          diff_file: "{{folder_diff}}/config.diff"
-      check_mode: yes
-      register: outnya
-
-    - debug:
-        var: outnya.msg
+- include: deploy.yml
+  tags: deploy
