@@ -18,10 +18,10 @@
           dev_os: "ios"
           config_file: "{{folder_network}}/cisco-asr-1001.conf"
           replace_config: true
-          commit_changes: true
+          commit_changes: false
           get_diffs: true
           diff_file: "{{folder_diff}}/build.diff"
-      check_mode: yes
+#      check_mode: yes
       register: outnya
 
 
