@@ -18,7 +18,7 @@
         diff: false
         check: false
         commit: false
-        dest: "{{folder_backup}}/backup.conf"
+        dest: "{{folder_backup}}/backup"
 
     - name: Commit to devices
       juniper_junos_config:
@@ -29,5 +29,5 @@
 #       confirm: 2
        commit: yes
        return_output: yes
-       diffs_file: "{{folder_diff}}/build.diff"
+       diffs_file: "{{folder_diff}}/deploy.diff"
        check_commit: yes   
