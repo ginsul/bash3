@@ -1,31 +1,6 @@
 ---
+- include: build.yml
+  tags: [ never, build ]
 
-    - name: re-create directory
-      file:
-        path: "{{ item.path }}"
-        state: "{{ item.state }}"
-        owner: root
-        group: root
-        mode: 0775
-      with_items:
-        - { path: '{{ folder_diff }}', state: 'absent'}
-        - { path: '{{ folder_diff }}', state: 'directory'}
-
-    - name: Check commit
-      juniper_junos_config:
-       provider: "{{ login_junos }}"
-       src: "{{folder_network}}/junos-srx.conf"
-       load: override
-       diff: yes
-#       confirm: 2
-       commit: yes
-       return_output: yes
-       diffs_file: "{{folder_diff}}/build.diff"
-       check_commit: yes
-      check_mode: yes      
-      register: config_results
-
-    - name: print version
-      debug:
-        var: config_results
-
+- include: deploy.yml
+  tags: [ never, deploy ]
