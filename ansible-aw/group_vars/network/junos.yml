@@ -1,4 +1,4 @@
-login_asr:
+login_junos:
  username: utha
  password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
