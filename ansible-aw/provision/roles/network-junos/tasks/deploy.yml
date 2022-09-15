@@ -1,0 +1,33 @@
+---
+
+    - name: re-create directory
+      file:
+        path: "{{ item.path }}"
+        state: "{{ item.state }}"
+        owner: root
+        group: root
+        mode: 0775
+      with_items:
+        - { path: '{{ folder_backup }}', state: 'absent'}
+        - { path: '{{ folder_backup }}', state: 'directory'}
+
+    - name: Retrieve the committed configuration/Backup
+      juniper_junos_config:
+        provider: "{{ login_junos }}"
+        retrieve: 'committed'
+        diff: false
+        check: false
+        commit: false
+        dest: "{{folder_backup}}/backup"
+
+    - name: Commit to devices
+      juniper_junos_config:
+       provider: "{{ login_junos }}"
+       src: "{{folder_network}}/junos-srx.conf"
+       load: override
+       diff: yes
+#       confirm: 2
+       commit: yes
+       return_output: yes
+       diffs_file: "{{folder_diff}}/deploy.diff"
+       check_commit: yes   

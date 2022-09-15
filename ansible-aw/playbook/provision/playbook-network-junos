@@ -1,0 +1,17 @@
+---
+
+- hosts: junos_devices
+  gather_facts: no
+  connection: local
+  vars:
+    - ansible_python_interpreter: /usr/local/bin/python3.10
+    - folder_network: "{{ lookup('env','WORKSPACE') }}/network"
+    - folder_diff: "{{ lookup('env','WORKSPACE') }}/folderdiff"
+    - folder_backup: "{{ lookup('env','WORKSPACE') }}/folderbackup"   
+
+  vars_files:
+    - ../../group_vars/network/junos.yml
+
+  roles:
+    - { role: Juniper.junos , tags: [ always ] }
+    - { role: ../../../provision/roles/network-junos }

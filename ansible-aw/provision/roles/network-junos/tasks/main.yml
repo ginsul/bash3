@@ -1,0 +1,9 @@
+---
+- include: build.yml
+  tags: [ never, build ]
+
+- include: deploy.yml
+  tags: [ never, deploy ]
+
+- include: build-tor1.yml
+  tags: [ never, build-tor1 ]
