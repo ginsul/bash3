@@ -1,24 +1,14 @@
 ---
 
-    - name: re-create directory
-      file:
-        path: "{{ item.path }}"
-        state: "{{ item.state }}"
-        owner: root
-        group: root
-        mode: 0775
-      with_items:
-        - { path: '{{ folder_diff }}', state: 'absent'}
-        - { path: '{{ folder_diff }}', state: 'directory'}
-
     - name: Check commit
       juniper_junos_config:
        provider: "{{ login_junos }}"
        src: "{{folder_network}}/tor1.conf"
        load: override
        diff: yes
+#       check_commit_wait: 5
 #       confirm: 2
-       commit: yes
+       commit: no
        return_output: yes
        diffs_file: "{{folder_diff}}/build.diff"
        check_commit: yes
