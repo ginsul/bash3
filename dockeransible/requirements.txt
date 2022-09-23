@@ -1,0 +1,8 @@
+ansible-core==2.13.3
+ansible 
+ansible-lint
+mitogen 
+jmespath 
+jxmlease
+napalm 
+napalm-ansible
