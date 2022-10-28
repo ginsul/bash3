@@ -1,8 +1,10 @@
 ansible-core==2.13.3
-ansible 
+ansible
 ansible-lint
-mitogen 
-jmespath 
+mitogen
+napalm>=4.0.0
+napalm-ansible>=1.1.0
+jmespath
 jxmlease
-napalm 
-napalm-ansible
+pybatfish>=2022.9.7.77
+PyYAML>=6.0
